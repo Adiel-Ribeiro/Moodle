@@ -43,12 +43,11 @@ chmod 700 /home/ec2-user/scripts
 mv mem.sh /home/ec2-user/scripts/.mem.sh 
 chmod 700 /home/ec2-user/scripts/.mem.sh 
 sudo chflags schg /home/ec2-user/scripts/.mem.sh 
+############################ cron #################################################################################
 echo "@reboot /home/ec2-user/scripts/.mem.sh"  > /home/ec2-user/cron
+echo "*/5 * * * *  php /usr/local/www/moodle/admin/cli/cron.php" >> cron
 cat /home/ec2-user/cron | sudo crontab -u root -
 rm cron
-echo "*/5 * * * * fetch http://localhost/moodle/admin/cron.php" > /home/ec2-user/moodle
-cat /home/ec2-user/moodle | sudo crontab -u ec2-user -
-rm moodle
 ###################################### final ##################################################################
 sudo chown www /usr/local/www/
 fetch -q --no-verify-peer https://raw.githubusercontent.com/Adiel-Ribeiro/Moodle/master/config.php
