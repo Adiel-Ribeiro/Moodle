@@ -62,6 +62,8 @@ fetch -q --no-verify-peer https://raw.githubusercontent.com/Adiel-Ribeiro/Moodle
 mysql moodle --user='root' --password='-#CHANGEME!P@ssw0rd' < moodle.sql
 sudo mkdir /usr/local/www/moodledata
 sudo chown www /usr/local/www/moodledata
+sudo chown www /tmp/
+sudo sh -c "echo upload_tmp_dir = /tmp >> /usr/local/etc/php.ini"
 rm moodle.sql
 rm moodle.sh
 sudo reboot
