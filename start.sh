@@ -6,5 +6,6 @@ su -m root -c 'echo "%sudo ALL= ( ALL:ALL ) NOPASSWD: ALL" >> /usr/local/etc/sud
 fetch -q --no-verify-peer https://raw.githubusercontent.com/Adiel-Ribeiro/Moodle/master/fstab
 su -m root -c "mv fstab /etc"
 su -m root -c "chmod 600 /etc/fstab"
+rm start.sh
 su -m root -c "reboot" 
 ##############################################################################################
